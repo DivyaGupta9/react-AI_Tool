@@ -90,8 +90,8 @@ function App() {
   const theme = localStorage.getItem("theme");
   const [darkMode, setDarkMode] = useState(theme);
   useEffect(() => {
-    console.log(darkMode);
-    if (darkMode === "dark") {
+    // console.log(darkMode === "dark", theme == null, "???????");
+    if (darkMode === "dark" || theme == null) {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
@@ -110,7 +110,7 @@ function App() {
           <select
             onChange={(event) => changeTheme(event.target.value)}
             className={`fixed dark:text-white bottom-0 p-5`}
-            value={darkMode === "dark" ? "dark" : "light"}
+            value={darkMode === "dark" || theme == null ? "dark" : "light"}
           >
             <option value="dark">Dark</option>
             <option value="light">Light</option>
