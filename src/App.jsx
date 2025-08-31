@@ -26,7 +26,12 @@ function App() {
     if (question) {
       if (localStorage.getItem("history", [])) {
         let history = JSON.parse(localStorage.getItem("history"));
+        history = history.slice(0, 19);
         history = [question, ...history];
+        history = history.map(
+          (item) => item.charAt(0).toUpperCase() + item.slice(1).trim()
+        );
+        history = [...new Set(history)];
         localStorage.setItem("history", JSON.stringify(history));
         setRecentHistory(history);
       } else {
@@ -109,7 +114,7 @@ function App() {
         <div className="grid grid-cols-5 h-screen text-center">
           <select
             onChange={(event) => changeTheme(event.target.value)}
-            className={`fixed dark:text-white bottom-0 p-5`}
+            className={`fixed dark:text-white  bottom-0 p-5`}
             value={darkMode === "dark" || theme == null ? "dark" : "light"}
           >
             <option value="dark">Dark</option>
@@ -191,7 +196,7 @@ function App() {
               </div>
             </div>
             <form onSubmit={askQuestion}>
-              <div className="dark:bg-zinc-800 w-1/2 p-1 pr-5 dark:text-white bg-red-50 text-zinc-800 m-auto rounded-4xl border border-zinc-700 flex h-16">
+              <div className="dark:bg-zinc-800 w-1/2 p-1 pr-5 dark:text-white bg-white text-zinc-800 m-auto rounded-4xl border border-zinc-700 flex h-16">
                 <input
                   type="text"
                   value={question}

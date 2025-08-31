@@ -10,7 +10,7 @@ const QuestionAnswer = ({ item, index }) => {
         {item.type == "question" ? (
           <li
             key={index + Math.random()}
-            className="text-right p-1  border-8 dark:border-zinc-600 dark:bg-zinc-600 bg-red-50 border-red-50 rounded-tl-3xl rounded-bl-3xl rounded-br-3xl  w-fit "
+            className="text-right   border-8 dark:border-zinc-600 dark:bg-zinc-600 bg-red-50 border-red-50 rounded-tl-3xl rounded-bl-3xl rounded-br-3xl  w-fit "
           >
             <Answer
               ans={item.text}
